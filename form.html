@@ -327,3 +327,147 @@
         </div>
     </fieldset>
 </form>
+
+.input-group [data-toggle="datetimepicker"] {
+    position: absolute;
+    right: 1px;
+    top: 1px;
+    z-index: 10;
+}
+
+    .input-group [data-toggle="datetimepicker"] .input-group-text {
+        background-color: transparent;
+        border: none;
+    }
+
+.bootstrap-datetimepicker-widget {
+    list-style: none;
+    padding: 0 !important;
+    border: none;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.15);
+}
+
+.datepicker-days tr th, .datepicker-days tr td {
+    font-weight: 500;
+    color: #6f6f6f;
+    font-size: 0.8rem;
+    border: 1px solid #f1f1f1 !important;
+    border-collapse: collapse;
+    background-color: #FFF;
+    padding: 5px;
+}
+
+.bootstrap-datetimepicker-widget td.day.old, .bootstrap-datetimepicker-widget td.day.new {
+    color: #dcdcdc !important;
+}
+
+.bootstrap-datetimepicker-widget table thead tr:first-child th:hover {
+    background-color: transparent;
+}
+
+.bootstrap-datetimepicker-widget table td.active, .bootstrap-datetimepicker-widget table td.active:hover, .bootstrap-datetimepicker-widget table td span.active {
+    background-color: #38787B;
+    border-radius: 0px;
+}
+
+.bootstrap-datetimepicker-widget table td.today:before {
+    right: 0px;
+    bottom: 0px;
+}
+
+.date .input-group-text {
+    padding: 7px 7px;
+    background-color: #FFF;
+    border-radius: 0;
+}
+
+.bootstrap-datetimepicker-widget table th.prev span, .bootstrap-datetimepicker-widget table th.next span {
+    display: inline-grid;
+    background-repeat: no-repeat;
+    width: 17px;
+    height: 17px;
+    background-size: cover;
+    margin-top: 7px;
+}
+
+.bootstrap-datetimepicker-widget a {
+    display: inline-grid;
+}
+
+    .bootstrap-datetimepicker-widget a span {
+        margin: 0 auto !important;
+    }
+
+.bootstrap-datetimepicker-widget table th.prev span {
+    background-image: url('/images/left-arrow.svg');
+}
+
+.bootstrap-datetimepicker-widget table th.next span {
+    background-image: url('/images/right-arrow.svg');
+}
+
+.timepicker {
+    align-self: center;
+}
+
+span.fa-arrow-up, span.fa-arrow-down {
+    display: inline-grid !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+    width: 30px !important;
+    height: 30px !important;
+    opacity: 0.5;
+}
+
+span.fa-arrow-up {
+    background-image: url('/images/up-arrow.svg');
+}
+
+span.fa-arrow-down {
+    background-image: url('/images/down-arrow.svg');
+}
+
+span.fa-arrow-up:hover {
+    background-color: transparent !important;
+    background-image: url('/images/up-arrow.svg') !important;
+    opacity: 0.35;
+}
+
+span.fa-arrow-down:hover {
+    background-color: transparent !important;
+    background-image: url('/images/down-arrow.svg') !important;
+    opacity: 0.35;
+}
+
+.fa-clock-o {
+    background-image: url('/images/time.svg') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    width: 30px !important;
+    height: 20px !important;
+}
+
+.fa-calendar {
+    background-color: transparent !important;
+    background-image: url('/images/calendar.svg') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    width: 30px !important;
+    height: 20px !important;
+}
+
+.fa-clock-o:hover {
+    background-color: transparent !important;
+    background-image: url('/images/time.svg') !important;
+    background-size: contain !important;
+    background-repeat: no-repeat !important;
+    background-position: center center !important;
+    width: 30px !important;
+    height: 20px !important;
+}
+
+.bootstrap-datetimepicker-widget .timepicker-hour, .bootstrap-datetimepicker-widget .timepicker-minute, .bootstrap-datetimepicker-widget .timepicker-second {
+    font-weight: normal;
+}

@@ -453,3 +453,45 @@ table table-striped table-bordered dt-responsive nowrap table-fullwidth table-bg
 .table .add-template {
     margin: 1rem;
 }
+[Route("/Reports/DownLoadReports/{reportId}/{eventdetailsId?}/{eventStartDate?}/{eventEndDate?}")]
+        public ActionResult DownLoadReports(string eventStartDate, string eventEndDate, int reportId, int eventdetailsId)
+        {
+            DataTable Ireport = _reportService.GetMultiReport(eventStartDate, eventEndDate, reportId, eventdetailsId,0);
+            string[] columnNames = Ireport.Columns.Cast<DataColumn>()
+                                 .Select(x => x.ColumnName)
+                                 .ToArray();
+            StandardCodes sc = _commonService.GetStandardCode(sessionData.OrganizationId, "MULTIREPORTS").OrderBy(a => a.ValueField).ToList().Where(r => r.ValueField == reportId).FirstOrDefault();
+            string ExcelHeader = sc.ShortDiscription;
+            string ExcelHeaderLine = sc.LongDiscription;
+            bool TotalRowAvailable = (sc.AdditionalValue != null && sc.AdditionalValue.ToString().Trim().ToUpper() == "TRUE") ? true : false;
+            byte[] filecontent;
+            if (reportId == 6)
+            {
+                var comlumHeadrs = new string[] {
+                "Position"
+               ,"JobRole"
+               ,"EventRole"
+               ,"FirstName"
+               ,"LastName"
+               ,"IDNumber"
+               ,"Vendor"
+               ,"Start"
+               ,"Finish"
+               ,"BibNo"
+               ,"Actual"
+               ,"Signature"
+               //,"VendorId"
+            };
+                List<StaffingSheet> StewardList = _reportService.GetStaffingSheet(eventStartDate, eventEndDate, reportId, eventdetailsId);
+                filecontent = Export.StaffingSheet(StewardList, comlumHeadrs, comlumHeadrs);
+            }
+            else if (reportId == 8)
+            {
+                filecontent = Export.ToExcel(Ireport, ExcelHeader, false, ExcelHeaderLine, TotalRowAvailable, columnNames);
+            }
+            else
+            {
+                filecontent = Export.ToExcel(Ireport, ExcelHeader, true, ExcelHeaderLine, TotalRowAvailable, columnNames);
+            }
+            return File(filecontent, Export.ExcelContentType, ExcelHeader.Replace("-", "").Replace(" ", "_").Trim() + ".xlsx");
+        }
